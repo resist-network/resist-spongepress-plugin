@@ -21,22 +21,10 @@ public final class DataStoreManager {
         if (getDataStore() != null) {
             clearDataStores();
         }
-        registerDataStore("H2", H2DataStore.class);
         registerDataStore("MYSQL", MYSQLDataStore.class);
-        switch (Config.storageEngine.toUpperCase()) {
-            case "MYSQL":
-                setDataStoreInstance("MYSQL");
-                plugin.getLogger().info("Loading datastore: MySQL");
-                return getDataStore().load();
-            case "H2":
-                setDataStoreInstance("H2");
-                plugin.getLogger().info("Loading datastore: H2 ");
-                return getDataStore().load();
-            default:
-                plugin.getLogger().error("Unable to determine selected datastore.");
-                plugin.getLogger().info("Available datastores: " + getAvailableDataStores().toString());
-                return false;
-        }
+		setDataStoreInstance("MYSQL");
+		plugin.getLogger().info("Loading MySQL data...");
+		return getDataStore().load();
     }
 
     /**

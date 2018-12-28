@@ -26,7 +26,7 @@ public class Config {
         configCheck();
     }
 
-    public static String chatPrefix = "&f[&6MMCRules&f] ";
+    public static String chatPrefix = "&8[&4&lResist&8&l.&4&lNetwork&r&8]&r ";
     public static String rulesAlias;
 
     //rules
@@ -52,19 +52,8 @@ public class Config {
     public static boolean blockCommandsBeforeAccept = false;
     public static boolean vanishBeforeAccept = false;
 
-    //teleport
-    public static boolean afterAccept = false;
-    public static String world;
-    public static Double posX;
-    public static Double posY;
-    public static Double posZ;
-    public static Double pitch;
-    public static Double yaw;
 
     //database
-    public static String storageEngine;
-    public static String databaseFile;
-    public static String h2Prefix;
     public static String mysqlHost;
     public static int mysqlPort;
     public static String mysqlDatabase;
@@ -77,18 +66,6 @@ public class Config {
         if (!plugin.defaultConfFile.exists()) {
             plugin.defaultConfFile.createNewFile();
         }
-
-        //cmd alias
-        rulesAlias = check(config.getNode("command", "alias"), "", "Command alias for /rules, This will only accept one alias. (Requires server restart to register)").getString();
-
-        //teleport
-        afterAccept = check(config.getNode("teleport", "afterAccept"), false, "Do you want the player to be teleported to a set location after they /acceptrules (set this with /mmcrules settp)").getBoolean();
-        world = check(config.getNode("teleport", "coordinates", "world"), "World").getString();
-        posX = check(config.getNode("teleport", "coordinates", "posx"), 0).getDouble();
-        posY = check(config.getNode("teleport", "coordinates", "posy"), 0).getDouble();
-        posZ = check(config.getNode("teleport", "coordinates", "posz"), 0).getDouble();
-        pitch = check(config.getNode("teleport", "coordinates", "pitch"), 0).getDouble();
-        yaw = check(config.getNode("teleport", "coordinates", "yaw"), 0).getDouble();
 
         //messages
         acceptedMsg = check(config.getNode("messages", "accepted"), acceptedMsg).getString();
@@ -113,15 +90,12 @@ public class Config {
         server = check(config.getNode("server"), "Global", "Name of the server. Used for indavidual server identification. If a different name is set, It will check if the player has accepted the rules for that specific server instead of globally.  Default: \"Global\"").getString();
 
         //database
-        storageEngine = check(config.getNode("storage", "storage-engine"), "h2", "The stoage engine that should be used, Allowed values: h2 or mysql").getString();
-        databaseFile = check(config.getNode("storage", "h2", "database-file"), "Database.db", "Where the databaseFile will be stored. Can be a relative or absolute path. An absolute path is recommended when using this to synchronize over several servers").getString();
-        h2Prefix = check(config.getNode("storage", "h2", "prefix"), "mmcrules_", "Prefix for the plugin tables").getString();
         mysqlHost = check(config.getNode("storage", "mysql", "host"), "localhost", "Host of the MySQL Server").getString();
         mysqlPort = check(config.getNode("storage", "mysql", "port"), "3306", "Port of the MySQL server. Default: 3306").getInt();
-        mysqlDatabase = check(config.getNode("storage", "mysql", "database"), "mmcrules", "The database to store in").getString();
+        mysqlDatabase = check(config.getNode("storage", "mysql", "database"), "resist", "The database to store in").getString();
         mysqlUser = check(config.getNode("storage", "mysql", "user"), "root", "The user for the database").getString();
         mysqlPass = check(config.getNode("storage", "mysql", "password"), "pass", "Password for that user").getString();
-        mysqlPrefix = check(config.getNode("storage", "mysql", "table-prefix"), "mmcrules_", "Prefix for the plugin tables").getString();
+        mysqlPrefix = check(config.getNode("storage", "mysql", "table-prefix"), "tools_", "Prefix for the plugin tables").getString();
 
 
         if (config.getNode("rules", "list").hasListChildren()) {

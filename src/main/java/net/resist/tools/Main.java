@@ -2,6 +2,8 @@ package net.resist.tools;
 
 import com.google.inject.Inject;
 import net.resist.tools.Commands.loginCMD;
+import net.resist.tools.Commands.logoutCMD;
+import net.resist.tools.Commands.setpassCMD;
 import net.resist.tools.Database.DataStoreManager;
 import net.resist.tools.Database.IDataStore;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
@@ -31,6 +33,7 @@ import org.spongepowered.api.text.serializer.TextSerializers;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +57,7 @@ public class Main {
     @Inject
     @ConfigDir(sharedRoot = false)
     private Path configDir;
-
+	
     public File userFile;
 
     public Config config;
@@ -77,15 +80,15 @@ public class Main {
     public void onServerAboutStart(GameAboutToStartServerEvent event) {
         dataStoreManager = new DataStoreManager(this);
         if (dataStoreManager.load()) {
-            getLogger().info("MMCRules datastore Loaded");
+            getLogger().info("Database is Loading...");
         } else {
-            getLogger().error("Unable to load a datastore please check your Console/Config!");
+            getLogger().error("Unable to load a database please check your Console/Config!");
         }
     }
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) throws IOException {
-        logger.info("MMCRules Loaded");
+        logger.info("Plugin Loaded!");
     }
 
     @Listener
@@ -98,20 +101,31 @@ public class Main {
     private void loadCommands() {
 
 
-        // /rules
-        CommandSpec rules = CommandSpec.builder()
-                .description(Text.of("See the list of rules for the server."))
+        // /login
+        CommandSpec login = CommandSpec.builder()
+                .description(Text.of("Login to the Server."))
                 .executor(new loginCMD(this))
                 .build();
-
-        cmdManager.register(this, rules, "rules", "mmcr");
+        cmdManager.register(this, login, "login");
+        // /logout
+        CommandSpec logout = CommandSpec.builder()
+                .description(Text.of("Logout of the Server."))
+                .executor(new logoutCMD(this))
+                .build();
+        cmdManager.register(this, logout, "logout");
+        // /logout
+        CommandSpec setpass = CommandSpec.builder()
+                .description(Text.of("Set new password on the Server."))
+                .executor(new setpassCMD(this))
+                .build();
+        cmdManager.register(this, setpass, "setpass");			
     }
 
     public void loadDataStore() {
         if (dataStoreManager.load()) {
-            getLogger().info("MMCRules datastore Loaded");
+            getLogger().info("Database Loaded!");
         } else {
-            getLogger().error("Unable to load a datastore please check your Console/Config!");
+            getLogger().error("Unable to load a database please check your Console/Config!");
         }
     }
 
@@ -134,7 +148,7 @@ public class Main {
                         player.offer(Keys.VANISH_IGNORES_COLLISION, true);
                         player.offer(Keys.VANISH_PREVENTS_TARGETING, true);
                     }
-                }).delay(1, TimeUnit.SECONDS).name("mmcrules-s-setPlayerInvisible").submit(this);
+                }).delay(1, TimeUnit.SECONDS).name("resist-tools-s-setPlayerInvisible").submit(this);
             }
         }
 
@@ -146,7 +160,7 @@ public class Main {
                 public void run() {
                     sendMessage(player, Config.chatPrefix + Config.informMsg);
                 }
-            }).delay(10, TimeUnit.SECONDS).name("mmcrules-s-sendInformOnLogin").submit(this);
+            }).delay(10, TimeUnit.SECONDS).name("resist-tools-s-sendInformOnLogin").submit(this);
         }
     }
 
