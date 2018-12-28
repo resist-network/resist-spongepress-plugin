@@ -66,7 +66,7 @@ public class loginCMD implements CommandExecutor {
 		MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
 		RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\nsys__op\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n3lch@rr099\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
 		Request request = new Request.Builder()
-		  .url("https://resist.network/wp-json/jwt-auth/v1/token")
+		  .url(Config.wordpressURL+"/wp-json/jwt-auth/v1/token")
 		  .post(body)
 		  .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
 		  .addHeader("username", "sys__op")

@@ -62,6 +62,7 @@ public class Config {
 	
 	//api endpoints
 	public static String APIendpoint;
+	public static String wordpressURL;
 
     public void configCheck() throws IOException, ObjectMappingException {
         if (!plugin.defaultConfFile.exists()) {
@@ -97,6 +98,7 @@ public class Config {
 
 		//api endpoints
 		APIendpoint = check(config.getNode("api", "endpoints", "type"), "wordpress", "Wordpress, NodeBB, XenForo, PHPBB (Currently only Wordpress)").getString();
+		wordpressURL = check(config.getNode("api", "endpoints", "wordpress", "url"), "https://resist.network", "The Wordpress Site URL (Wordpress Dashboard >> Settings >> General >> Site URL)").getString();
 
         if (config.getNode("rules", "list").hasListChildren()) {
             ruleList = Lists.newArrayList(config.getNode("rules", "list").getList(TypeToken.of(String.class)));
