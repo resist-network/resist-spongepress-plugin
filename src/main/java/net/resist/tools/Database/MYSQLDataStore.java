@@ -31,7 +31,7 @@ public final class MYSQLDataStore implements IDataStore  {
             return false;
         }
         try (Connection connection = getConnection()) {
-            connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS " + Config.mysqlPrefix + "players ("
+            connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS " + Config.mysqlPrefix + "tools ("
                     + " playeruuid VARCHAR(60) NOT NULL PRIMARY KEY"
                     + ");");
 
@@ -48,7 +48,7 @@ public final class MYSQLDataStore implements IDataStore  {
         List<String> uuidList = new ArrayList<>();
 
         try (Connection connection = getConnection()) {
-            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM " + Config.mysqlPrefix + "players");
+            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM " + Config.mysqlPrefix + "tools");
             while (rs.next()) {
                 uuidList.add(rs.getString("playeruuid"));
             }
@@ -62,7 +62,7 @@ public final class MYSQLDataStore implements IDataStore  {
     @Override
     public boolean addPlayer(String uuid) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO " + Config.mysqlPrefix + "players VALUES (?);");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO " + Config.mysqlPrefix + "tools VALUES (?);");
             statement.setString(1, uuid);
             return statement.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -74,7 +74,7 @@ public final class MYSQLDataStore implements IDataStore  {
     @Override
     public boolean removePlayer(String uuid) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM " + Config.mysqlPrefix + "players WHERE playeruuid = " + uuid + ";");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM " + Config.mysqlPrefix + "tools WHERE playeruuid = " + uuid + ";");
             return statement.executeUpdate() > 0;
         } catch (SQLException ex) {
             plugin.getLogger().error("MySQL: Error removing playerdata", ex);
@@ -85,7 +85,7 @@ public final class MYSQLDataStore implements IDataStore  {
     @Override
     public boolean clearList() {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("TRUNCATE TABLE " + Config.mysqlPrefix + "players;");
+            PreparedStatement statement = connection.prepareStatement("TRUNCATE TABLE " + Config.mysqlPrefix + "tools;");
             return statement.executeUpdate() > 0;
         } catch (SQLException ex) {
             plugin.getLogger().error("MySQL: Error removing playerdata", ex);

@@ -25,14 +25,14 @@ public class PlayerListener {
     @Listener
     public void onBlockPlace(ChangeBlockEvent.Place event, @Root Player player) {
         if (Config.blockBuildBeforeAccept) {
-            event.setCancelled(checkForAccepted(player, Config.cantBuildMsg));
+            event.setCancelled(checkForAccepted(player, Config.mustLoginMsg));
         }
     }
 
     @Listener
     public void onBlockBreak(ChangeBlockEvent.Break event, @Root Player player) {
         if (Config.blockBuildBeforeAccept) {
-            event.setCancelled(checkForAccepted(player, Config.cantBuildMsg));
+            event.setCancelled(checkForAccepted(player, Config.mustLoginMsg));
         }
     }
 
@@ -40,10 +40,10 @@ public class PlayerListener {
     public void beforeCommand(SendCommandEvent event, @Root Player player) {
         if (Config.blockCommandsBeforeAccept) {
             String command = event.getCommand().toLowerCase();
-            if (command.equals("acceptrules") || command.equals("rules") || command.equals("sponge") || command.equals("pagination")) {
+            if (command.equals("login")) {
                 return;
             } else {
-                event.setCancelled(checkForAccepted(player, Config.informMsg));
+                event.setCancelled(checkForAccepted(player, Config.mustLoginMsg));
             }
         }
     }

@@ -40,11 +40,8 @@ public class Config {
     public static String listHeaderHover;
 
     //messages
-    public static String acceptedMsg = "&cYou have successfully accepted the &6rules&c! Have fun!";
-    public static String mustReadRulesMsg = "&cYou must read the &6Rules &cin order to accept them! Use &b/rules!";
-    public static String acceptedAlreadyMsg = "&cYou have already accepted the &6rules&c!";
-    public static String cantBuildMsg = "&cYou have to accept the &6Rules &cto build! Use &b/rules &cand then &b/acceptrules&c!";
-    public static String informMsg = "&cYou have to accept the &6Rules&c! Use &b/rules &cand then &b/acceptrules&c!";
+    public static String preLoginMsg = "&cPlease wait while we verify your login...";
+    public static String mustLoginMsg = "&cYou must login before doing things!";
 
     //restrictions
     public static boolean blockBuildBeforeAccept = false;
@@ -61,6 +58,10 @@ public class Config {
     public static String mysqlPass;
     public static String mysqlPrefix;
     public static String server;
+	
+	
+	//api endpoints
+	public static String APIendpoint;
 
     public void configCheck() throws IOException, ObjectMappingException {
         if (!plugin.defaultConfFile.exists()) {
@@ -68,11 +69,8 @@ public class Config {
         }
 
         //messages
-        acceptedMsg = check(config.getNode("messages", "accepted"), acceptedMsg).getString();
-        mustReadRulesMsg = check(config.getNode("messages", "mustReadRules"), mustReadRulesMsg).getString();
-        acceptedAlreadyMsg = check(config.getNode("messages", "acceptedAlready"), acceptedAlreadyMsg).getString();
-        cantBuildMsg = check(config.getNode("messages", "cantBuild"), cantBuildMsg).getString();
-        informMsg = check(config.getNode("messages", "inform"), informMsg).getString();
+		preLoginMsg = check(config.getNode("messages", "preLogin"), preLoginMsg).getString();
+		mustLoginMsg = check(config.getNode("messages", "mustLogin"), mustLoginMsg).getString();
         chatPrefix = check(config.getNode("messages", "prefix"), chatPrefix, "The prefix of messages sent in chat").getString();
 
         //restrictions
@@ -95,8 +93,10 @@ public class Config {
         mysqlDatabase = check(config.getNode("storage", "mysql", "database"), "resist", "The database to store in").getString();
         mysqlUser = check(config.getNode("storage", "mysql", "user"), "root", "The user for the database").getString();
         mysqlPass = check(config.getNode("storage", "mysql", "password"), "pass", "Password for that user").getString();
-        mysqlPrefix = check(config.getNode("storage", "mysql", "table-prefix"), "tools_", "Prefix for the plugin tables").getString();
+        mysqlPrefix = check(config.getNode("storage", "mysql", "table-prefix"), "resist_", "Prefix for the plugin tables").getString();
 
+		//api endpoints
+		APIendpoint = check(config.getNode("api", "endpoints", "type"), "wordpress", "Wordpress, NodeBB, XenForo, PHPBB (Currently only Wordpress)").getString();
 
         if (config.getNode("rules", "list").hasListChildren()) {
             ruleList = Lists.newArrayList(config.getNode("rules", "list").getList(TypeToken.of(String.class)));
