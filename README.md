@@ -1,5 +1,5 @@
 <p align="center"><img src="https://github.com/resist-network/extras-pack/blob/master/images/128x128.png?raw=true"></p>
-<h1 align="center">tools-plugin</h1>
+<h1 align="center">wodpress-plugin</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
 
 <h1 align="center">original author credits</h1>
