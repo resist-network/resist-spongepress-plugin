@@ -7,13 +7,7 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
-import org.spongepowered.api.text.LiteralText;
-import org.spongepowered.api.text.Text;
-
-import java.net.HttpURLConnection;
-import java.util.Collection;
 import java.util.Optional;
-import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -21,7 +15,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 public class loginCMD implements CommandExecutor {
     private final Main plugin;
-		private static HttpURLConnection con;		
     public loginCMD(Main instance) {
         plugin = instance;
     }

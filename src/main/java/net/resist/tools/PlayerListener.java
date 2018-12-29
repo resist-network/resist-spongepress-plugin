@@ -16,7 +16,6 @@ public class PlayerListener {
         plugin = instance;
     }
     @SuppressWarnings("unused")
-	private Map<UUID, Instant> lastMoveNotification = Maps.newHashMap();
     @Listener
     public void onBlockPlace(ChangeBlockEvent.Place event, @Root Player player) throws Exception {
         if (Config.blockBuildBeforeLogin) {
