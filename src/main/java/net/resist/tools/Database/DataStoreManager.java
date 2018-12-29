@@ -1,6 +1,5 @@
 package net.resist.tools.Database;
 
-import net.resist.tools.Config;
 import net.resist.tools.Main;
 
 import java.lang.reflect.InvocationTargetException;

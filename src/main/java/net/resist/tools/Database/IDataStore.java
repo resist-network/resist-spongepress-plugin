@@ -10,6 +10,8 @@ public interface IDataStore {
 
     public abstract List<String> getAccepted();
 
+    public abstract List<String> getLoggedIn();
+
     public abstract boolean addPlayer(String uuid);
 
     public abstract boolean removePlayer(String uuid);
