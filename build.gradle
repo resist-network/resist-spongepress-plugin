@@ -9,7 +9,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 group = 'net.resist'
 version = '1.0.0'
 
-description = """Resist.Network Tools Mod"""
+description = 'Resist.Network Wordpress Plugin'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

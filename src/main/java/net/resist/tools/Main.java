@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
-@Plugin(id = "resist-tools", name = "Resist Tools", version = "1.0.0", description = "Resist.Network Tools Plugin.")
+@Plugin(id = "wordpress-plugin", name = "Wordpress Plugin", version = "1.0.1", description = "Resist.Network Wordpress Plugin")
 public class Main {
     @Inject
     private Logger logger;
