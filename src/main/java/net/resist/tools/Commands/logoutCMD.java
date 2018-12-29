@@ -7,12 +7,6 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
-import java.io.IOException;
-import okhttp3.OkHttpClient;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 public class logoutCMD implements CommandExecutor {
     private final Main plugin;
     public logoutCMD(Main instance) {
@@ -22,7 +16,7 @@ public class logoutCMD implements CommandExecutor {
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		Player player = (Player) src;
 		String playerName = player.getName();
-		plugin.getDataStore().removePlayer(player.getName().toString());
+		plugin.getDataStore().removePlayer(playerName);
         plugin.sendMessage(player, Config.chatPrefix + Config.logoutSuccess);
 		return CommandResult.success();
     }

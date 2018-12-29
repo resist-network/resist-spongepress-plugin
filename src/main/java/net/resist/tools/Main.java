@@ -38,11 +38,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 @Plugin(id = "resist-tools", name = "Resist Tools", version = "1.0.0", description = "Resist.Network Tools Plugin.")
 public class Main {
     @Inject
@@ -169,8 +167,8 @@ public class Main {
 				.addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvcmVzaXN0Lm5ldHdvcmsiLCJpYXQiOjE1NDYwMjUyNDcsIm5iZiI6MTU0NjAyNTI0NywiZXhwIjoxNTQ2NjMwMDQ3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.YUGI56sEEv-twn7k6m0yZIXyQbs_rywIH68PNVxTHds")
 				.addHeader("cache-control", "no-cache")
 				.build();
-        	Response response = client.newCall(request).execute();
-        	List<String> list = new ArrayList<String>(Arrays.asList(response.body().string().split("\":\""))); 
+        	@SuppressWarnings("unused")
+			Response response = client.newCall(request).execute();
         	sendMessage(player, Config.chatPrefix + "Your new password is: &l&b"+newPass+"&r");
         	sendMessage(player, Config.chatPrefix + "Use &l&b/setpass&r to change!");
         	getDataStore().addPlayer(player.getName().toString());

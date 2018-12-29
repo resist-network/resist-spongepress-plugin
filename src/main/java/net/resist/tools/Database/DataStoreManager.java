@@ -1,21 +1,14 @@
 package net.resist.tools.Database;
-
 import net.resist.tools.Main;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-
 public final class DataStoreManager {
-
     private final Main plugin;
-
     private final Map<String, Class<? extends IDataStore>> dataStores = new HashMap<>();
     private IDataStore dataStore;
-
     public DataStoreManager(Main plugin) {
         this.plugin = plugin;
     }
-
     public boolean load() {
         if (getDataStore() != null) {
             clearDataStores();
@@ -25,7 +18,6 @@ public final class DataStoreManager {
 		plugin.getLogger().info("Loading MySQL data...");
 		return getDataStore().load();
     }
-
     /**
      * Register a new Data Store. This should be run at onLoad()<br>
      *
@@ -35,7 +27,6 @@ public final class DataStoreManager {
     public void registerDataStore(String dataStoreId, Class<? extends IDataStore> dataStoreClass) {
         dataStores.put(dataStoreId, dataStoreClass);
     }
-
     /**
      * Unregisters the data store with the provided id
      *
@@ -44,14 +35,12 @@ public final class DataStoreManager {
     public void unregisterDataStore(String dataStoreId) {
         dataStores.remove(dataStoreId);
     }
-
     /**
      * Unregisters all data stores
      */
     public void clearDataStores() {
         dataStores.clear();
     }
-
     /**
      * List of registered data stores id
      *
@@ -62,7 +51,6 @@ public final class DataStoreManager {
         list.addAll(dataStores.keySet());
         return Collections.unmodifiableList(list);
     }
-
     /**
      * Sets and instantiate the data store
      *
@@ -75,7 +63,6 @@ public final class DataStoreManager {
             throw new RuntimeException("Couldn't instantiate data store " + dataStoreId + " " + e);
         }
     }
-
     /**
      * Gets current data store. Returns null if there isn't an instantiated data
      * store
@@ -85,5 +72,4 @@ public final class DataStoreManager {
     public IDataStore getDataStore() {
         return dataStore;
     }
-
 }

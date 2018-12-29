@@ -128,4 +128,3 @@ public final class MYSQLDataStore implements IDataStore  {
         return dataSource.get().getConnection();
     }
 }
-
