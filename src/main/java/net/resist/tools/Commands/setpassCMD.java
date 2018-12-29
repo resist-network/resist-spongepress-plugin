@@ -29,16 +29,25 @@ public class setpassCMD implements CommandExecutor {
             String password = firstPass.get().toString();
             String passwordAgain = secondPass.get().toString();
             if (password.matches(passwordAgain)) {
-	        	OkHttpClient client = new OkHttpClient();
-		        MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-		        RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n"+playerName+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"+passwordAgain+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-		        Request request = new Request.Builder()
-		          .url("https://resist.network/wp-json/jwt-auth/v1/token")
-		          .post(body)
-		          .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-		          .addHeader("cache-control", "no-cache")
-		          .build();
-		        Response response = client.newCall(request).execute();
+
+            	
+            	//start new
+            	OkHttpClient client = new OkHttpClient();
+
+            	MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+            	RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\ntest99\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
+            	Request request = new Request.Builder()
+            	  .url("https://resist.network/wp-json/wp/v2/users/21")
+            	  .post(body)
+            	  .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
+            	  .addHeader("authorization", "Bearer "+plugin.wordpressToken)
+            	  .addHeader("cache-control", "no-cache")
+            	  .build();
+
+            	Response response = client.newCall(request).execute();            	
+            	//end new
+            	
+            	
 				plugin.sendMessage(src, Config.chatPrefix + "Login Result: "+response.body().string());
 	        } else {
 	        	plugin.sendMessage(src, Config.chatPrefix + Config.passwordNoMatch);

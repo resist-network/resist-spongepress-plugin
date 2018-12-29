@@ -148,11 +148,9 @@ public class Main {
     @Listener
     public void onPlayerLogin(ClientConnectionEvent.Join event, @Root Player player) {
     	String playerName = player.getName();
-    	//getLogger().info("getAccepted() Contents: "+getDataStore().getAccepted().toString());
         if (!getDataStore().getAccepted().contains(player.getName().toString())) {
         	getLogger().info("Player "+playerName+" is a new player to the server!");
         	sendMessage(player, Config.chatPrefix + "Welcome to the server &l&e"+playerName+"&r!");
-        	//need to api create user here...
         try {
             Random rnd = new Random();
             int number = rnd.nextInt(999999);        	
@@ -164,7 +162,7 @@ public class Main {
 				.url("https://resist.network/wp-json/wp/v2/users")
 				.post(body)
 				.addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-				.addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvcmVzaXN0Lm5ldHdvcmsiLCJpYXQiOjE1NDYwMjUyNDcsIm5iZiI6MTU0NjAyNTI0NywiZXhwIjoxNTQ2NjMwMDQ3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.YUGI56sEEv-twn7k6m0yZIXyQbs_rywIH68PNVxTHds")
+				.addHeader("authorization", "Bearer "+wordpressToken)
 				.addHeader("cache-control", "no-cache")
 				.build();
         	@SuppressWarnings("unused")
