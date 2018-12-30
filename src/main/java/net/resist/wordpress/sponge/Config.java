@@ -62,8 +62,6 @@ public class Config{
             blockMovementBeforeLogin,"Blocked from moving before login?").getBoolean();
         blockCommandsBeforeLogin=check(config.getNode("restrictions","blockCommandsBeforeLogin"),
             blockCommandsBeforeLogin,"Blocked from sending commands before login?").getBoolean();
-        blockDamageBeforeLogin=check(config.getNode("restrictions","blockDamageBeforeLogin"),blockDamageBeforeLogin,
-            "Blocked from getting damage before login?").getBoolean();
         vanishBeforeLogin=check(config.getNode("restrictions","vanishBeforeAccept"),vanishBeforeLogin,
             "Invisible to all players before login?").getBoolean();
         mysqlHost=check(config.getNode("storage","mysql","host"),"localhost","Host of the MySQL Server").getString();
