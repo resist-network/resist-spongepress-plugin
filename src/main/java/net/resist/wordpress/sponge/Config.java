@@ -24,6 +24,7 @@ public class Config{
     public static String preLoginMsg="&ePlease wait, verifying your password...";
     public static String mustLoginMsg="&cYou must login before doing things!";
     public static String passwordNoMatch="&cPasswords did not match, try again!";
+    public static String setpassError="&cStrange error setting your pass, contact staff!";
     public static String miscLoginError="&cThere was an error, please contact staff!";
     public static String incorrectPassword="&cWrong password!";
     public static String loginSuccess="&aYou have successfully logged in!";
@@ -48,6 +49,7 @@ public class Config{
         preLoginMsg=check(config.getNode("messages","preLogin"),preLoginMsg).getString();
         mustLoginMsg=check(config.getNode("messages","mustLogin"),mustLoginMsg).getString();
         passwordNoMatch=check(config.getNode("messages","passwordNoMatch"),passwordNoMatch).getString();
+        setpassError=check(config.getNode("messages","setpassError"),setpassError).getString();
         miscLoginError=check(config.getNode("messages","miscLoginError"),miscLoginError).getString();
         incorrectPassword=check(config.getNode("messages","incorrectPassword"),incorrectPassword).getString();
         loginSuccess=check(config.getNode("messages","loginSuccess"),loginSuccess).getString();

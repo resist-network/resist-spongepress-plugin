@@ -34,7 +34,6 @@ public class setpassCMD implements CommandExecutor{
                 String wordpressID=plugin.getDataStore().getWordpressID(playerName);
                 plugin.sendMessage(src,Config.chatPrefix+"Wordpress User ID: "+wordpressID);
                 if(password.matches(passwordAgain)){
-                    // start new
                     OkHttpClient client=new OkHttpClient();
                     MediaType mediaType=MediaType.parse(
                         "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
@@ -45,9 +44,6 @@ public class setpassCMD implements CommandExecutor{
                         .addHeader("Authorization","Bearer "+plugin.wordpressToken).addHeader("cache-control","no-cache")
                         .build();
                     Response response=client.newCall(request).execute();
-                    // end news
-                    plugin.sendMessage(src,Config.chatPrefix+"Set Pass Result: "+response.body().string());
-                    plugin.sendMessage(src,Config.chatPrefix+"Wordpress Token Used: "+plugin.wordpressToken);
                 }else{
                     plugin.sendMessage(src,Config.chatPrefix+Config.passwordNoMatch);
                 }
