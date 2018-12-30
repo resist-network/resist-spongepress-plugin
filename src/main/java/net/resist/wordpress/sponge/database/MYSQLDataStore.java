@@ -54,8 +54,8 @@ public final class MYSQLDataStore implements IDataStore{
         List<String> uuidList=new ArrayList<>();
         String wordpressID=null;
         try(Connection connection=getConnection()){
-            ResultSet rs=connection.createStatement().executeQuery("SELECT user_login FROM "+Config.mysqlPrefix
-                +"users");
+            ResultSet rs=connection.createStatement().executeQuery("SELECT ID FROM "+Config.mysqlPrefix
+                +"users WHERE user_login = '"+username+"'");
             while(rs.next()){
                 uuidList.add(rs.getString("ID"));
             }
