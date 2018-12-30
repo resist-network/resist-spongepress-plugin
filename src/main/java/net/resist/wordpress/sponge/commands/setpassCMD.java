@@ -22,33 +22,33 @@ public class setpassCMD implements CommandExecutor{
     public CommandResult execute(CommandSource src,CommandContext args) throws CommandException{
         Player player=(Player)src;
         String playerName=player.getName();
-        plugin.sendMessage(player,Config.chatPrefix+Config.preLoginMsg);
+        //plugin.sendMessage(player,Config.chatPrefix+Config.preLoginMsg);
         try{
             Optional<String> firstPass=args.<String>getOne("password");
             Optional<String> secondPass=args.<String>getOne("passwordAgain");
             String password=firstPass.get();
             String passwordAgain=secondPass.get();
             String wordpressID=plugin.getDataStore().getWordpressID(playerName);
-            plugin.sendMessage(src,Config.chatPrefix+"WORDPRESS ID: "+wordpressID);
+            plugin.sendMessage(src,Config.chatPrefix+"Wordpress User ID: "+wordpressID);
             if(password.matches(passwordAgain)){
                 // start new
                 OkHttpClient client=new OkHttpClient();
                 MediaType mediaType=MediaType.parse(
                     "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                 RequestBody body=RequestBody.create(mediaType,
-                    "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\ntest99\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
+                    "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"+passwordAgain+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
                 Request request=new Request.Builder().url("https://resist.network/wp-json/wp/v2/users/"+wordpressID).post(body)
                     .addHeader("content-type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                    .addHeader("authorization","Bearer "+plugin.wordpressToken).addHeader("cache-control","no-cache")
+                    .addHeader("Authorization","Bearer "+plugin.wordpressToken).addHeader("cache-control","no-cache")
                     .build();
                 Response response=client.newCall(request).execute();
                 // end new
-                plugin.sendMessage(src,Config.chatPrefix+"Login Result: "+response.body().string());
+                plugin.sendMessage(src,Config.chatPrefix+"Set Pass Result: "+response.body().string());
             }else{
                 plugin.sendMessage(src,Config.chatPrefix+Config.passwordNoMatch);
             }
         }catch(Exception e){
-            plugin.sendMessage(src,Config.chatPrefix+"Login Error: "+e);
+            plugin.sendMessage(src,Config.chatPrefix+"Set Pass Error: "+e);
         }
         return CommandResult.success();
     }
