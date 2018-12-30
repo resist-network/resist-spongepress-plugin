@@ -38,12 +38,10 @@ jar {
     classifier = ''
     manifest {
         attributes(
-                'Built-By': 'Resist.Network',
-                'Created-By': System.properties['java.vm.version'] + ' (' + System.properties['java.vm.vendor'] + ')',
-                'Implementation-Title': name,
-                'Implementation-Version': version,
-                'Implementation-Vendor': 'https://resist.network'
-        )
+                'Author': 'Resist.Network',
+                'Created-With': 'Java '+System.properties['java.vm.version'] + ' (' + System.properties['java.vm.vendor'] + ')',
+                'Name': project.name,
+                'Version': project.version        )
     }    
 }
 artifacts {
