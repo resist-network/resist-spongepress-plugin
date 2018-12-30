@@ -4,7 +4,7 @@
 
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
-<p align="center">JWT Authentication Plugin for Wordpress: <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/">JWT-Auth Plugin on Wordpress Website</a>
+<p align="center">JWT-Auth: <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/">JWT-Authentication Plugin for Wordpress</a>
 
 <h1 align="center">optional dependencies</h1>
 <p align="center">Our Wordpress Theme: <a href="https://github.com/resist-network/resist-wordpress-theme">Resist Wordpress Theme</a>
