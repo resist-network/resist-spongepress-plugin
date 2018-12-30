@@ -37,7 +37,7 @@ public class setpassCMD implements CommandExecutor{
                     "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                 RequestBody body=RequestBody.create(mediaType,
                     "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\ntest99\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-                Request request=new Request.Builder().url("https://resist.network/wp-json/wp/v2/users/21").post(body)
+                Request request=new Request.Builder().url("https://resist.network/wp-json/wp/v2/users/"+wordpressID).post(body)
                     .addHeader("content-type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
                     .addHeader("authorization","Bearer "+plugin.wordpressToken).addHeader("cache-control","no-cache")
                     .build();
