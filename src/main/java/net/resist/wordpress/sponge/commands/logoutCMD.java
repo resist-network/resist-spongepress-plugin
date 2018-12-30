@@ -21,7 +21,7 @@ public class logoutCMD implements CommandExecutor{
         } else {
             plugin.getDataStore().removePlayer(playerName);
             plugin.sendMessage(player,Config.chatPrefix+Config.logoutSuccess);
-            return CommandResult.success();
         }
+        return CommandResult.success();
     }
 }

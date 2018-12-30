@@ -58,7 +58,7 @@ public class loginCMD implements CommandExecutor{
                 plugin.getDataStore().removePlayer(player.getName());
                 plugin.sendMessage(src,Config.chatPrefix+Config.miscLoginError);
             }
-            return CommandResult.success();
         }
+        return CommandResult.success();
     }
 }
