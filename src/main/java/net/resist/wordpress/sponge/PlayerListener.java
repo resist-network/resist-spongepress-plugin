@@ -13,17 +13,17 @@ public class PlayerListener{
     }
     @Listener
     public void onBlockPlace(ChangeBlockEvent.Place event,@Root Player player) throws Exception{
+        String playerName = player.getName().toString();        
         if(Config.blockBuildBeforeLogin){
-            event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
+            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
         }
-        event.setCancelled(true);
     }
     @Listener
     public void onBlockBreak(ChangeBlockEvent.Break event,@Root Player player) throws Exception{
+        String playerName = player.getName().toString();
         if(Config.blockBuildBeforeLogin){
-            event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
+            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
         }
-        event.setCancelled(true);
     }
     @Listener
     public void beforeCommand(SendCommandEvent event,@Root Player player) throws Exception{
@@ -37,30 +37,27 @@ public class PlayerListener{
     }
     @Listener
     public void onEntityMove(MoveEntityEvent event,@Root Player player){
+        String playerName = player.getName().toString();        
         if(Config.blockMovementBeforeLogin){
-            if(plugin.getDataStore().getLoggedIn().contains(player.getName())){
+            if(plugin.getDataStore().getLoggedIn().contains(playerName)){
                 return;
             }
             event.setCancelled(true);
-            // plugin.sendMessage(player, Config.chatPrefix +
-            // Config.mustLoginMsg);
         }
     }
     @Listener
     public void onDamage(DamageEntityEvent event,@Root Player player){
-        if(Config.blockMovementBeforeLogin){
-            if(plugin.getDataStore().getLoggedIn().contains(player.getName())){
-                event.setCancelled(false);
-                return;
-            }
-            event.setCancelled(true);
+        String playerName = player.getName().toString();                
+        if(Config.blockDamageBeforeLogin){
+            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
         }
     }
-    private boolean checkForAccepted(Player player,String message) throws Exception{
-        if(plugin.getDataStore().getLoggedIn().contains(player.getName())){
+    private boolean checkForAccepted(String player,String message) throws Exception{
+        String playerName = player.getName().toString();                
+        if (plugin.getDataStore().getLoggedIn().contains(playerName)) {
             return false;
         }
-        plugin.sendMessage(player,Config.chatPrefix+Config.mustLoginMsg);
+//        plugin.sendMessage(player, Config.chatPrefix + message);
         return true;
     }
 }

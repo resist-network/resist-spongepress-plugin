@@ -63,12 +63,12 @@ public class Config{
             "Invisible to all players before login?").getBoolean();
         mysqlHost=check(config.getNode("storage","mysql","host"),"localhost","Host of the MySQL Server").getString();
         mysqlPort=check(config.getNode("storage","mysql","port"),"3306","Port of the MySQL server. Default: 3306").getInt();
-        mysqlDatabase=check(config.getNode("storage","mysql","database"),"resist","The database to store in").getString();
-        mysqlUser=check(config.getNode("storage","mysql","user"),"root","The user for the database").getString();
-        mysqlPass=check(config.getNode("storage","mysql","password"),"pass","Password for that user").getString();
-        mysqlPrefix=check(config.getNode("storage","mysql","table-prefix"),"resist_","Prefix for the plugin tables").getString();
+        mysqlDatabase=check(config.getNode("storage","mysql","database"),"","The database to store in").getString();
+        mysqlUser=check(config.getNode("storage","mysql","user"),"","The user for the database").getString();
+        mysqlPass=check(config.getNode("storage","mysql","password"),"","Password for that user").getString();
+        mysqlPrefix=check(config.getNode("storage","mysql","table-prefix"),"wp_","Prefix for the plugin tables").getString();
         APIendpoint=check(config.getNode("api","endpoints","type"),"wordpress","Currently only Wordpress").getString();
-        wordpressURL=check(config.getNode("api","endpoints","wordpress","url"),"https://resist.network","The Wordpress Site URL").getString();
+        wordpressURL=check(config.getNode("api","endpoints","wordpress","url"),"","The Wordpress Site URL").getString();
         wordpressAdminUser=check(config.getNode("api","endpoints","wordpress","adminUser"),"","Wordpress Site Admin Username").getString();
         wordpressAdminPass=check(config.getNode("api","endpoints","wordpress","adminPass"),"","Wordpress Site Admin Password").getString();
         wordpressNewUserEmailDomain=check(config.getNode("api","endpoints","wordpress","newUserEmailDomain"),"resist.network","Wordpress FQDN").getString();

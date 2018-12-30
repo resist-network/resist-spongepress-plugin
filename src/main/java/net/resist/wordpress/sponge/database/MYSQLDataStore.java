@@ -26,8 +26,7 @@ public final class MYSQLDataStore implements IDataStore{
         }
         try(Connection connection=getConnection()){
             connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS "+Config.mysqlPrefix+"players ("
-                +" username VARCHAR(60) NOT NULL PRIMARY KEY, inWordpress VARCHAR(60) DEFAULT 'false', lastIP VARCHAR(60), locX INT(10), locY INT(10), locZ INT(10), wordpressID VARCHAR(60)"
-                +");");
+                +" username VARCHAR(60) NOT NULL PRIMARY KEY, lastIP VARCHAR(60), locX INT(10), locY INT(10), locZ INT(10));");
             getConnection().commit();
         }catch(SQLException ex){
             plugin.getLogger().error(mysqlError,ex);
@@ -85,7 +84,7 @@ public final class MYSQLDataStore implements IDataStore{
     public boolean addPlayer(String username){
         try(Connection connection=getConnection()){
             PreparedStatement statement=connection.prepareStatement("INSERT INTO "+Config.mysqlPrefix
-                +"players VALUES ('"+username+"','false','',0,0,0,'');");
+                +"players VALUES ('"+username+"','',0,0,0);");
             plugin.getLogger().info("SQL Query: "+statement.toString());
             return statement.executeUpdate()>0;
         }catch(SQLException ex){
@@ -138,8 +137,6 @@ public final class MYSQLDataStore implements IDataStore{
         }catch(SQLException ex){
             plugin.getLogger().error("MySQL: Failed to get datastore.",ex);
             return Optional.empty();
-        }finally{
-            ds.close();
         }
     }
     public Connection getConnection() throws SQLException{

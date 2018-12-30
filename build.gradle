@@ -25,12 +25,12 @@ dependencies {
 }
 shadowJar {
 	classifier ''
-    relocate 'com.squareup.okhttp3', 'net.resist.external.okhttp3'
-    relocate 'com.squareup.okio', 'net.resist.external.okio'
     dependencies {
             include(dependency("com.squareup.okhttp3:okhttp:3.9.0"))
             include(dependency("com.squareup.okio:okio:1.13.0"))
     }
+    relocate 'com.squareup.okhttp3', 'net.resist.external.okhttp3'
+    relocate 'com.squareup.okio', 'net.resist.external.okio'
 }
 jar {
 	classifier ''
