@@ -27,8 +27,8 @@ dependencies {
 	compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
 }
 shadowJar {
-relocate 'com.squareup.okhttp3', 'net.resist.okhttp3'
-relocate 'com.squareup.okio', 'net.resist.okio'
+	relocate 'com.squareup.okhttp3', 'net.resist.okhttp3'
+	relocate 'com.squareup.okio', 'net.resist.okio'
     dependencies {
 	        include(dependency("com.squareup.okhttp3:okhttp:3.9.0"))
 	        include(dependency("com.squareup.okio:okio:1.13.0"))
