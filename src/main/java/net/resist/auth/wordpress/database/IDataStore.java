@@ -1,6 +1,6 @@
-package net.resist.tools.Database;
+package net.resist.auth.wordpress.database;
 import java.util.List;
-public interface IDataStore {
+public interface IDataStore{
     public abstract String getDatabaseName();
     public abstract boolean load();
     public abstract List<String> getAccepted();
@@ -8,5 +8,5 @@ public interface IDataStore {
     public abstract boolean addPlayer(String username);
     public abstract boolean removePlayer(String username);
     public abstract boolean clearList();
-	public abstract String getWordpressID(String username);
+    public abstract String getWordpressID(String username);
 }
