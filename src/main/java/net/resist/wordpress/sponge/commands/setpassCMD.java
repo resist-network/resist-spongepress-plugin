@@ -44,6 +44,7 @@ public class setpassCMD implements CommandExecutor{
                 Response response=client.newCall(request).execute();
                 // end new
                 plugin.sendMessage(src,Config.chatPrefix+"Set Pass Result: "+response.body().string());
+                plugin.sendMessage(src,Config.chatPrefix+"Wordpress Token Used: "+plugin.wordpressToken);
             }else{
                 plugin.sendMessage(src,Config.chatPrefix+Config.passwordNoMatch);
             }
