@@ -15,14 +15,14 @@ public class PlayerListener{
     public void onBlockPlace(ChangeBlockEvent.Place event,@Root Player player) throws Exception{
         String playerName = player.getName().toString();        
         if(Config.blockBuildBeforeLogin){
-            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
+            event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
         }
     }
     @Listener
     public void onBlockBreak(ChangeBlockEvent.Break event,@Root Player player) throws Exception{
         String playerName = player.getName().toString();
         if(Config.blockBuildBeforeLogin){
-            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
+            event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
         }
     }
     @Listener
@@ -45,19 +45,19 @@ public class PlayerListener{
             event.setCancelled(true);
         }
     }
-    @Listener
+    /*@Listener
     public void onDamage(DamageEntityEvent event,@Root Player player){
         String playerName = player.getName().toString();                
         if(Config.blockDamageBeforeLogin){
-            event.setCancelled(checkForAccepted(playerName,Config.mustLoginMsg));
+            event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
         }
-    }
-    private boolean checkForAccepted(String player,String message) throws Exception{
+    }*/
+    private boolean checkForAccepted(Player player,String message) throws Exception{
         String playerName = player.getName().toString();                
         if (plugin.getDataStore().getLoggedIn().contains(playerName)) {
             return false;
         }
-//        plugin.sendMessage(player, Config.chatPrefix + message);
+        plugin.sendMessage(player, Config.chatPrefix + message);
         return true;
     }
 }
