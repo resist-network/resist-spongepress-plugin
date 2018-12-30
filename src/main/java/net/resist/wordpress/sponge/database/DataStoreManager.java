@@ -18,44 +18,20 @@ public final class DataStoreManager{
         plugin.getLogger().info("Loading MySQL data...");
         return getDataStore().load();
     }
-    /**
-     * Register a new Data Store. This should be run at onLoad()<br>
-     *
-     * @param dataStoreId    ID that identifies this data store <br>
-     * @param dataStoreClass a class that implements IDataStore
-     */
     public void registerDataStore(String dataStoreId,Class<? extends IDataStore> dataStoreClass){
         dataStores.put(dataStoreId,dataStoreClass);
     }
-    /**
-     * Unregisters the data store with the provided id
-     *
-     * @param dataStoreId
-     */
     public void unregisterDataStore(String dataStoreId){
         dataStores.remove(dataStoreId);
     }
-    /**
-     * Unregisters all data stores
-     */
     public void clearDataStores(){
         dataStores.clear();
     }
-    /**
-     * List of registered data stores id
-     *
-     * @return
-     */
     public List<String> getAvailableDataStores(){
         List<String> list=new ArrayList<>();
         list.addAll(dataStores.keySet());
         return Collections.unmodifiableList(list);
     }
-    /**
-     * Sets and instantiate the data store
-     *
-     * @param dataStoreId
-     */
     private void setDataStoreInstance(String dataStoreId){
         try{
             dataStore=dataStores.get(dataStoreId).getConstructor(Main.class).newInstance(this.plugin);
@@ -64,12 +40,6 @@ public final class DataStoreManager{
             throw new RuntimeException("Couldn't instantiate data store "+dataStoreId+" "+e);
         }
     }
-    /**
-     * Gets current data store. Returns null if there isn't an instantiated data
-     * store
-     *
-     * @return
-     */
     public IDataStore getDataStore(){
         return dataStore;
     }

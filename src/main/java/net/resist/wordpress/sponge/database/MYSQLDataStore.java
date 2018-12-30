@@ -21,7 +21,6 @@ public final class MYSQLDataStore implements IDataStore{
     @Override
     public boolean load(){
         if(!dataSource.isPresent()){
-            //plugin.getLogger().error("Selected datastore: 'MySQL' is not avaiable please select another datastore.");
             return false;
         }
         try(Connection connection=getConnection()){
@@ -29,7 +28,6 @@ public final class MYSQLDataStore implements IDataStore{
                 +" username VARCHAR(60) NOT NULL PRIMARY KEY, lastIP VARCHAR(60), locX INT(10), locY INT(10), locZ INT(10));");
             getConnection().commit();
         }catch(SQLException ex){
-            //plugin.getLogger().error(mysqlError,ex);
             return false;
         }
         return true;
@@ -87,9 +85,7 @@ public final class MYSQLDataStore implements IDataStore{
                 +"players VALUES ('"+username+"','',0,0,0);");
             plugin.getLogger().info("SQL Query: "+statement.toString());
             return statement.executeUpdate()>0;
-        }catch(SQLException ex){
-            // plugin.getLogger().error("MySQL: Error adding playerdata", ex);
-        }
+        }catch(SQLException ex){}
         return false;
     }
     @Override
@@ -98,9 +94,7 @@ public final class MYSQLDataStore implements IDataStore{
             PreparedStatement statement=connection.prepareStatement("DELETE FROM "+Config.mysqlPrefix
                 +"players WHERE username = '"+username+"';");
             return statement.executeUpdate()>0;
-        }catch(SQLException ex){
-            // plugin.getLogger().error("MySQL: Error removing playerdata", ex);
-        }
+        }catch(SQLException ex){}
         return false;
     }
     @Override

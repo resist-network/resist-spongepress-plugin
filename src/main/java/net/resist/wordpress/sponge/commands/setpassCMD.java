@@ -22,7 +22,6 @@ public class setpassCMD implements CommandExecutor{
     public CommandResult execute(CommandSource src,CommandContext args) throws CommandException{
         Player player=(Player)src;
         String playerName=player.getName();
-        //plugin.sendMessage(player,Config.chatPrefix+Config.preLoginMsg);
         if (!plugin.getDataStore().getLoggedIn().contains(playerName)) {
             plugin.sendMessage(src,Config.chatPrefix+Config.mustLoginMsg);
         } else {        

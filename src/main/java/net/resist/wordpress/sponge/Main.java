@@ -80,8 +80,6 @@ public class Main{
     }
     @Listener
     public void onServerStart(GameStartedServerEvent event) throws IOException{
-        // Logs in with a Wordpress Admin User Specified in Config, and
-        // Retrieves the Token for Operations on the User API
         try{
             MediaType mediaType=MediaType.parse(formType);
             OkHttpClient client=new OkHttpClient();
@@ -96,15 +94,7 @@ public class Main{
             String tokenString=responseGetToken.body().string();
             List<String> list=new ArrayList<>(Arrays.asList(tokenString.split("\":\"")));
             wordpressToken=list.get(1).replace("\",\"user_email","");
-            // For later use in another function if we need to iterate over a
-            // stupid JSON object in Java again. Ew.
-            // for(int i=0;i<list.size();i++) {
-            // logger.info("Wordpress Token: "+wordpressToken);
             logger.info("Wordpress token was created successfully!");
-            // }
-            // This could add something to a new table, but for now we just will
-            // check Wordpress tables.
-            // plugin.getDataStore().addPlayer(player.getUniqueId().toString());
         }catch(Exception e){
             getLogger().error("Wordpress Token Error: "+e);
         }
@@ -116,15 +106,12 @@ public class Main{
         loadDataStore();
     }
     private void loadCommands(){
-        // /login
         CommandSpec login=CommandSpec.builder().description(Text.of("Login to the Server.")).arguments(GenericArguments
             .string(Text.of("password"))).executor(new loginCMD(this)).build();
         cmdManager.register(this,login,"login");
-        // /logout
         CommandSpec logout=CommandSpec.builder().description(Text.of("Logout of the Server.")).arguments().executor(
             new logoutCMD(this)).build();
         cmdManager.register(this,logout,"logout");
-        // /setpass
         CommandSpec setpass=CommandSpec.builder().description(Text.of("Login to the Server.")).arguments(
             GenericArguments.string(Text.of("password")),GenericArguments.string(Text.of("passwordAgain"))).executor(
                 new setpassCMD(this)).build();
@@ -171,9 +158,6 @@ public class Main{
                 getLogger().error("Create User Error: "+e);
             }
         }else{
-            // need config messages here maybe, but also need placeholders and
-            // just... ew. doing all the messages that dont require a variable
-            // placeholder
             sendMessage(player,Config.chatPrefix+"Welcome back &l&e"+playerName+"&r!");
             sendMessage(player,Config.chatPrefix+"Use &l&e/login&r before continuing!");
         }

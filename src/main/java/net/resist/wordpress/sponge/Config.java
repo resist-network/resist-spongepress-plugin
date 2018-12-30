@@ -18,7 +18,6 @@ public class Config{
     public static boolean blockBuildBeforeLogin=true;
     public static boolean blockMovementBeforeLogin=true;
     public static boolean blockCommandsBeforeLogin=false;
-    public static boolean blockDamageBeforeLogin=true;
     public static boolean vanishBeforeLogin=false;
     public static String chatPrefix="&8[&4&lResist&8&l.&4&lNetwork&r&8]&r ";
     public static String preLoginMsg="&ePlease wait, verifying your password...";
