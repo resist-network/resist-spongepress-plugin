@@ -23,6 +23,7 @@ dependencies {
     compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
 }
 shadowJar {
+	classifier ''
     relocate 'com.squareup.okhttp3', 'net.resist.external.okhttp3'
     relocate 'com.squareup.okio', 'net.resist.external.okio'
     dependencies {
@@ -31,6 +32,7 @@ shadowJar {
     }
 }
 jar {
+	classifier ''
     dependencies {
         compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
     }
@@ -42,7 +44,7 @@ jar {
 			'Project-Name': project.name,
 			'Project-Version': project.version,
 			'Project-GitHub': 'https://github.com/resist-network/resist-wordpress-sponge',
-			'Created-With': 'Java '+System.properties['java.vm.version'] + ' (' + System.properties['java.vm.vendor'] + ')'
+			'Built-On': 'Java '+System.properties['java.vm.version'] + ' (' + System.properties['java.vm.vendor'] + ')'
 		)
     }    
 }
