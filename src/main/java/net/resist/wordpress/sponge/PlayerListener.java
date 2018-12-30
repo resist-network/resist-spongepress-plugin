@@ -47,7 +47,6 @@ public class PlayerListener{
     }
     @Listener
     public void onDamage(DamageEntityEvent event,@Root Player player){
-        String playerName = player.getName().toString();                
         if(Config.blockDamageBeforeLogin){
             event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
         }
