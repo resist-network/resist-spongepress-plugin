@@ -2,11 +2,11 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/spigot-api-1.12.2-R0.1-20180712.012057-156-shaded.jar"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/spongeapi-7.1.0-shaded.jar"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/okhttp-3.9.0.jar"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/okio-1.13.0.jar"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/HikariCP-2.7.1.jar"/>
-	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/tools-plugin/external/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/HikariCP-2.7.1.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/okhttp-3.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/okio-1.13.0.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/spigot-api-1.12.2-R0.1-20180712.012057-156-shaded.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/wordpress-plugin/external/spongeapi-7.1.0-shaded.jar"/>
 	<classpathentry kind="output" path="build/classes/java/main"/>
 </classpath>

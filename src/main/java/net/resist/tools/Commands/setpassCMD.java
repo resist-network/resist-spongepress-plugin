@@ -28,6 +28,8 @@ public class setpassCMD implements CommandExecutor {
             Optional<String> secondPass = args.<String>getOne("passwordAgain");
             String password = firstPass.get().toString();
             String passwordAgain = secondPass.get().toString();
+            String wordpressID = plugin.getDataStore().getWordpressID(playerName);
+            plugin.sendMessage(src, Config.chatPrefix + "WORDPRESS ID: "+wordpressID);
             if (password.matches(passwordAgain)) {
 
             	
