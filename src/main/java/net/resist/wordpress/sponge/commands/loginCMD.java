@@ -1,4 +1,4 @@
-package net.resist.wordpress.commands;
+package net.resist.wordpress.sponge.commands;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
