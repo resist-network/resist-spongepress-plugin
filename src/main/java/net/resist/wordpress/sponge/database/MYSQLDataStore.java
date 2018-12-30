@@ -21,7 +21,7 @@ public final class MYSQLDataStore implements IDataStore{
     @Override
     public boolean load(){
         if(!dataSource.isPresent()){
-            plugin.getLogger().error("Selected datastore: 'MySQL' is not avaiable please select another datastore.");
+            //plugin.getLogger().error("Selected datastore: 'MySQL' is not avaiable please select another datastore.");
             return false;
         }
         try(Connection connection=getConnection()){
@@ -29,7 +29,7 @@ public final class MYSQLDataStore implements IDataStore{
                 +" username VARCHAR(60) NOT NULL PRIMARY KEY, lastIP VARCHAR(60), locX INT(10), locY INT(10), locZ INT(10));");
             getConnection().commit();
         }catch(SQLException ex){
-            plugin.getLogger().error(mysqlError,ex);
+            //plugin.getLogger().error(mysqlError,ex);
             return false;
         }
         return true;

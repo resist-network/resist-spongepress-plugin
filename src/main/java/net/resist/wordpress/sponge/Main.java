@@ -75,7 +75,7 @@ public class Main{
             getLogger().info("Database is Loading...");
             getDataStore().clearList();
         }else{
-            getLogger().error("Unable to load a database please check your Console/Config!");
+            getLogger().error("Something is wrong with your config, disabling plugin!");
         }
     }
     @Listener
@@ -99,7 +99,7 @@ public class Main{
             // For later use in another function if we need to iterate over a
             // stupid JSON object in Java again. Ew.
             // for(int i=0;i<list.size();i++) {
-            logger.info("Wordpress Token: "+wordpressToken);
+            // logger.info("Wordpress Token: "+wordpressToken);
             logger.info("Wordpress token was created successfully!");
             // }
             // This could add something to a new table, but for now we just will
