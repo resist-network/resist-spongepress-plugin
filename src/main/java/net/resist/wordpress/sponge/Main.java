@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
+@Plugin(id="resist-wordpress-sponge",name="Resist Wordpress Sponge",version="1.0.0",description="Secondary Wordpress Sponge Authentication")
 public class Main{
     @Inject
     private Logger logger;
