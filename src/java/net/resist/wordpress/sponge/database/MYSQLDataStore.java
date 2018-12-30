@@ -1,11 +1,11 @@
-package net.resist.auth.wordpress.database;
+package net.resist.wordpress.sponge.database;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.zaxxer.hikari.HikariDataSource;
-import net.resist.auth.wordpress.Config;
-import net.resist.auth.wordpress.Main;
+import net.resist.wordpress.sponge.Config;
+import net.resist.wordpress.sponge.Main;
 public final class MYSQLDataStore implements IDataStore{
     private final Main plugin;
     private final Optional<HikariDataSource> dataSource;

@@ -1,12 +1,12 @@
-package net.resist.auth.wordpress.commands;
+package net.resist.wordpress.commands;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
-import net.resist.auth.wordpress.Config;
-import net.resist.auth.wordpress.Main;
+import net.resist.wordpress.sponge.Config;
+import net.resist.wordpress.sponge.Main;
 import java.util.Optional;
 import okhttp3.OkHttpClient;
 import okhttp3.MediaType;

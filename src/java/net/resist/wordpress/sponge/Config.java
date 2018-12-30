@@ -1,4 +1,4 @@
-package net.resist.auth.wordpress;
+package net.resist.wordpress.sponge;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
