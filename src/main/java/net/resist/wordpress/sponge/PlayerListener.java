@@ -45,12 +45,12 @@ public class PlayerListener{
             event.setCancelled(true);
         }
     }
-    @Listener
+    /*@Listener
     public void onDamage(DamageEntityEvent event,@Root Player player){
         if(Config.blockDamageBeforeLogin){
             event.setCancelled(checkForAccepted(player,Config.mustLoginMsg));
         }
-    }
+    }*/
     private boolean checkForAccepted(Player player,String message) throws Exception{
         String playerName = player.getName().toString();                
         if (plugin.getDataStore().getLoggedIn().contains(playerName)) {
