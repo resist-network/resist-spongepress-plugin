@@ -59,7 +59,7 @@ public final class MYSQLDataStore implements IDataStore{
             while(rs.next()){
                 uuidList.add(rs.getString("ID"));
             }
-            wordpressID=uuidList.toString();
+            wordpressID=wordpressID.toString().replace("[","").replace("]","");
         }catch(SQLException ex){
             plugin.getLogger().info(mysqlError,ex);
         }
