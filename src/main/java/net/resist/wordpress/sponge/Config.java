@@ -28,6 +28,8 @@ public class Config{
     public static String incorrectPassword="&cWrong password!";
     public static String loginSuccess="&aYou have successfully logged in!";
     public static String logoutSuccess="&aYou have successfully logged out!";
+    public static String alreadyLoggedInError="&aYou are already logged in!";
+    public static String alreadyLoggedOutError="&aYou are already logged out!";
     public static String mysqlHost;
     public static String mysqlDatabase;
     public static String mysqlUser;
@@ -50,6 +52,8 @@ public class Config{
         incorrectPassword=check(config.getNode("messages","incorrectPassword"),incorrectPassword).getString();
         loginSuccess=check(config.getNode("messages","loginSuccess"),loginSuccess).getString();
         logoutSuccess=check(config.getNode("messages","logoutSuccess"),logoutSuccess).getString();
+        alreadyLoggedInError=check(config.getNode("messages","alreadyLoggedInError"),alreadyLoggedInError).getString();
+        alreadyLoggedOutError=check(config.getNode("messages","alreadyLoggedOutError"),alreadyLoggedOutError).getString();
         chatPrefix=check(config.getNode("messages","prefix"),chatPrefix,"The prefix of messages sent in chat").getString();
         blockBuildBeforeLogin=check(config.getNode("restrictions","blockBuildBeforeLogin"),blockBuildBeforeLogin,
             "Blocked from placing and breaking blocks before login?").getBoolean();

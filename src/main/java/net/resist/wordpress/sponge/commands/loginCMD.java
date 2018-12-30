@@ -22,39 +22,43 @@ public class loginCMD implements CommandExecutor{
     public CommandResult execute(CommandSource src,CommandContext args) throws CommandException{
         Player player=(Player)src;
         String playerName=player.getName();
-        try{
-            plugin.sendMessage(player,Config.chatPrefix+Config.preLoginMsg);
-            Optional<String> firstPass=args.<String>getOne("password");
-            String password=firstPass.get();
-            if(password!=null&&!password.isEmpty()){
-                OkHttpClient client=new OkHttpClient();
-                MediaType mediaType=MediaType.parse(
-                    "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-                RequestBody body=RequestBody.create(mediaType,
-                    "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n"
-                        +playerName
-                        +"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"
-                        +password+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-                Request request=new Request.Builder().url("https://resist.network/wp-json/jwt-auth/v1/token").post(body)
-                    .addHeader("content-type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                    .addHeader("cache-control","no-cache").build();
-                Response response=client.newCall(request).execute();
-                String responseString=response.body().string();
-                if(responseString.contains(":403}")){
+        if (plugin.getDataStore().getLoggedIn().contains(playerName)) {
+            plugin.sendMessage(src,Config.chatPrefix+Config.alreadyLoggedInError);
+        } else {
+            try{
+                plugin.sendMessage(player,Config.chatPrefix+Config.preLoginMsg);
+                Optional<String> firstPass=args.<String>getOne("password");
+                String password=firstPass.get();
+                if(password!=null&&!password.isEmpty()){
+                    OkHttpClient client=new OkHttpClient();
+                    MediaType mediaType=MediaType.parse(
+                        "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    RequestBody body=RequestBody.create(mediaType,
+                        "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n"
+                            +playerName
+                            +"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"
+                            +password+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
+                    Request request=new Request.Builder().url("https://resist.network/wp-json/jwt-auth/v1/token").post(body)
+                        .addHeader("content-type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
+                        .addHeader("cache-control","no-cache").build();
+                    Response response=client.newCall(request).execute();
+                    String responseString=response.body().string();
+                    if(responseString.contains(":403}")){
+                        plugin.getDataStore().removePlayer(player.getName());
+                        plugin.sendMessage(src,Config.chatPrefix+Config.incorrectPassword);
+                    }else if(responseString.contains(playerName)){
+                        plugin.getDataStore().addPlayer(player.getName());
+                        plugin.sendMessage(src,Config.chatPrefix+Config.loginSuccess);
+                    }
+                }else{
                     plugin.getDataStore().removePlayer(player.getName());
-                    plugin.sendMessage(src,Config.chatPrefix+Config.incorrectPassword);
-                }else if(responseString.contains(playerName)){
-                    plugin.getDataStore().addPlayer(player.getName());
-                    plugin.sendMessage(src,Config.chatPrefix+Config.loginSuccess);
+                    plugin.sendMessage(src,Config.chatPrefix+Config.passwordNoMatch);
                 }
-            }else{
+            }catch(Exception e){
                 plugin.getDataStore().removePlayer(player.getName());
-                plugin.sendMessage(src,Config.chatPrefix+Config.passwordNoMatch);
+                plugin.sendMessage(src,Config.chatPrefix+Config.miscLoginError);
             }
-        }catch(Exception e){
-            plugin.getDataStore().removePlayer(player.getName());
-            plugin.sendMessage(src,Config.chatPrefix+Config.miscLoginError);
+            return CommandResult.success();
         }
-        return CommandResult.success();
     }
 }

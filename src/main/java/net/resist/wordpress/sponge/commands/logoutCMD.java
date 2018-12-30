@@ -16,8 +16,12 @@ public class logoutCMD implements CommandExecutor{
     public CommandResult execute(CommandSource src,CommandContext args) throws CommandException{
         Player player=(Player)src;
         String playerName=player.getName();
-        plugin.getDataStore().removePlayer(playerName);
-        plugin.sendMessage(player,Config.chatPrefix+Config.logoutSuccess);
-        return CommandResult.success();
+        if (!plugin.getDataStore().getLoggedIn().contains(playerName)) {
+            plugin.sendMessage(src,Config.chatPrefix+Config.alreadyLoggedOutError);
+        } else {
+            plugin.getDataStore().removePlayer(playerName);
+            plugin.sendMessage(player,Config.chatPrefix+Config.logoutSuccess);
+            return CommandResult.success();
+        }
     }
 }
