@@ -1,6 +1,7 @@
 <p align="center"><img src="https://github.com/resist-network/extras-pack/blob/master/images/128x128.png?raw=true"></p>
 <h1 align="center">resist-wordpress-sponge</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
+<p align="center"><img src="https://github.com/resist-network/resist-wordpress-theme/blob/master/screenshot.png?raw=true"></p>
 
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
