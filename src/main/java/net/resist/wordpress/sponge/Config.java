@@ -26,10 +26,11 @@ public class Config{
     public static String setpassError="&cStrange error setting your pass, contact staff!";
     public static String miscLoginError="&cThere was an error, please contact staff!";
     public static String incorrectPassword="&cWrong password!";
+    public static String setpassSuccess="&aYou successfully set a new password!";
     public static String loginSuccess="&aYou have successfully logged in!";
     public static String logoutSuccess="&aYou have successfully logged out!";
-    public static String alreadyLoggedInError="&aYou are already logged in!";
-    public static String alreadyLoggedOutError="&aYou are already logged out!";
+    public static String alreadyLoggedInError="&eYou are already logged in!";
+    public static String alreadyLoggedOutError="&eYou are already logged out!";
     public static String mysqlHost;
     public static String mysqlDatabase;
     public static String mysqlUser;
@@ -51,6 +52,7 @@ public class Config{
         setpassError=check(config.getNode("messages","setpassError"),setpassError).getString();
         miscLoginError=check(config.getNode("messages","miscLoginError"),miscLoginError).getString();
         incorrectPassword=check(config.getNode("messages","incorrectPassword"),incorrectPassword).getString();
+        setpassSuccess=check(config.getNode("messages","setpassSuccess"),setpassSuccess).getString();
         loginSuccess=check(config.getNode("messages","loginSuccess"),loginSuccess).getString();
         logoutSuccess=check(config.getNode("messages","logoutSuccess"),logoutSuccess).getString();
         alreadyLoggedInError=check(config.getNode("messages","alreadyLoggedInError"),alreadyLoggedInError).getString();
