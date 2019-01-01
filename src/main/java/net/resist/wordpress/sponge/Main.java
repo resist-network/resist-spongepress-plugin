@@ -46,27 +46,26 @@ public class Main{
     @Inject
     private Logger logger;
     @Inject
-    @DefaultConfig(sharedRoot=false)
+    @DefaultConfig(sharedRoot=true)
     public Path defaultConf;
     @Inject
     @DefaultConfig(sharedRoot=false)
     public File defaultConfFile;
     @Inject
-    @ConfigDir(sharedRoot=false)
-    private Path configDir;
+    @ConfigDir(sharedRoot=true)
+    public Path configDir;
     public File userFile;
     public Config config;
     public String wordpressToken;
     private DataStoreManager dataStoreManager;
     private CommandManager cmdManager=Sponge.getCommandManager();
     private static final String formType="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW";
-    public List<String> readRules=new ArrayList<>();
     @Listener
     public void Init(GameInitializationEvent event) throws IOException,ObjectMappingException{
         Sponge.getEventManager().registerListeners(this,new PlayerListener(this));
+		defaultConf = configDir.resolve("resist.network/wordpress.conf");
         config=new Config(this);
         loadCommands();
-        userFile=new File(configDir.toFile(),"users.dat");
     }
     @Listener
     public void onServerAboutStart(GameAboutToStartServerEvent event){
