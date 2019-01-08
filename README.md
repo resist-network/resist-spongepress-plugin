@@ -1,7 +1,12 @@
 <p align="center"><img src="https://github.com/resist-network/extras-pack/blob/master/images/128x128.png?raw=true"></p>
 <h1 align="center">resist-wordpress-sponge</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
-
+<p align="center">
+-[X] Optional for Players<br />
+-[X] Register in Game<br />
+-[X] Set Password in Game<br />
+-[X] Account Protection<br />
+</p>
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
 <p align="center">JWT-Auth: <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/">JWT-Authentication Plugin for Wordpress</a>
