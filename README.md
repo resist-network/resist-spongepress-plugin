@@ -2,10 +2,10 @@
 <h1 align="center">resist-wordpress-sponge</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
 <p align="center">
-<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> <font size="7">Optional for Players</font><br />
-<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> <span style="font-size:2em;">Optional for Players</span><br />
-<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> <span style="font-size:2em;">Optional for Players</span><br />
-<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> <span style="font-size:2em;">Optional for Players</span><br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
 </p>
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
