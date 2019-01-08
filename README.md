@@ -6,6 +6,8 @@
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Register in Game<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Change Password in Game<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Change Wordpress Profile in Game<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Account Protection/Movement/Place<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Logout Feature<br />
 </p>
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
