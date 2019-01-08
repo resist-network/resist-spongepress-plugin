@@ -2,10 +2,10 @@
 <h1 align="center">resist-wordpress-sponge</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
 <p align="center">
--[X] Optional for Players<br />
--[X] Register in Game<br />
--[X] Set Password in Game<br />
--[X] Account Protection<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> Optional for Players<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> Register in Game<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> Set Password in Game<br />
+<img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="20" width="20"> Account Protection<br />
 </p>
 <h1 align="center">core dependencies</h1>
 <p align="center">Wordpress: <a href="https://wordpress.org">The Wordpress Website</a>
