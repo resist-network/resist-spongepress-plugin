@@ -2,7 +2,7 @@
 <h1 align="center">resist-wordpress-sponge</h1>
 <p align="center">Resist.Network Wordpress Plugin</p>
 <p align="center">
-<img style="margin-top:5px;" src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
+<img style="margin-bottom:-5px;" src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="15" width="15"> Optional for Players<br />
