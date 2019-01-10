@@ -8,11 +8,11 @@ import org.spongepowered.api.entity.living.player.Player;
 import net.resist.spongepress.Config;
 import net.resist.spongepress.Main;
 import java.util.Optional;
-import okhttp3.OkHttpClient;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 public class setpassCMD implements CommandExecutor{
     private final Main plugin;
     public setpassCMD(Main instance){
