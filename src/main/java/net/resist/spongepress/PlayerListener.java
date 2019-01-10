@@ -1,4 +1,4 @@
-package net.resist.wordpress.sponge;
+package net.resist.spongepress;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.ChangeBlockEvent;

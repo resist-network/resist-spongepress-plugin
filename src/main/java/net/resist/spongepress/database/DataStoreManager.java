@@ -1,7 +1,7 @@
-package net.resist.wordpress.sponge.database;
+package net.resist.spongepress.database;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import net.resist.wordpress.sponge.Main;
+import net.resist.spongepress.Main;
 public final class DataStoreManager{
     private final Main plugin;
     private final Map<String,Class<? extends IDataStore>> dataStores=new HashMap<>();

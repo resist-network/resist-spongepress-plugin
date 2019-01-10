@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/resist-network/extras-pack/blob/master/images/128x128.png?raw=true"></p>
-<h1 align="center">resist-wordpress-sponge</h1>
-<p align="center">Resist.Network Wordpress Plugin</p>
+<h1 align="center">resist-spongepress-plugin</h1>
+<p align="center">Resist.Network SpongePress Plugin (RESIST-SpongePress)</p>
 <p align="center">
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Optional for Players<br />
 <img src="http://www.checkmarkclass.com/uploads/3/5/5/6/3556/whisper128.png" height="10" width="10"> Register in Game<br />

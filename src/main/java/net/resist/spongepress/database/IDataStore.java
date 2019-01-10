@@ -1,4 +1,4 @@
-package net.resist.wordpress.sponge.database;
+package net.resist.spongepress.database;
 import java.util.List;
 public interface IDataStore{
     public abstract String getDatabaseName();

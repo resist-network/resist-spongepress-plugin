@@ -5,8 +5,8 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'com.github.johnrengelman.shadow'
 group = 'net.resist'
-version = '1.0.0'
-description = 'Secondary Wordpress Sponge Authentication'
+version = '1.0.1'
+description = 'Wordpress Authentication and Utilities'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
@@ -44,7 +44,7 @@ jar {
 			'Author-GitHub': 'https://github.com/resist-network',
 			'Project-Name': project.name,
 			'Project-Version': project.version,
-			'Project-GitHub': 'https://github.com/resist-network/resist-wordpress-sponge',
+			'Project-GitHub': 'https://github.com/resist-network/resist-spongepress-plugin',
 			'Built-On': 'Java '+System.properties['java.vm.version'] + ' (' + System.properties['java.vm.vendor'] + ')'
 		)
     }    

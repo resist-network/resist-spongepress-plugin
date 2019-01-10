@@ -1,10 +1,10 @@
-package net.resist.wordpress.sponge;
+package net.resist.spongepress;
 import com.google.inject.Inject;
-import net.resist.wordpress.sponge.commands.loginCMD;
-import net.resist.wordpress.sponge.commands.logoutCMD;
-import net.resist.wordpress.sponge.commands.setpassCMD;
-import net.resist.wordpress.sponge.database.DataStoreManager;
-import net.resist.wordpress.sponge.database.IDataStore;
+import net.resist.spongepress.commands.loginCMD;
+import net.resist.spongepress.commands.logoutCMD;
+import net.resist.spongepress.commands.setpassCMD;
+import net.resist.spongepress.database.DataStoreManager;
+import net.resist.spongepress.database.IDataStore;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
-@Plugin(id="resist-wordpress-sponge",name="Resist Wordpress Sponge",version="1.0.0",description="Secondary Wordpress Sponge Authentication")
+@Plugin(id="resist-spongepress-plugin",name="RESIST-SpongePress",version="1.0.1",description="Wordpress Authentication and Utilities")
 public class Main{
     @Inject
     private Logger logger;
