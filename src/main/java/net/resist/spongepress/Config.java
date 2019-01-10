@@ -10,7 +10,7 @@ public class Config{
     public static CommentedConfigurationNode config;
     public Config(Main main) throws IOException,ObjectMappingException{
         plugin=main;
-        loader=HoconConfigurationLoader.builder().setPath(plugin.defaultConf).build();
+        loader=HoconConfigurationLoader.builder().setPath(plugin.resistConf).build();
         config=loader.load();
         configCheck();
     }
@@ -43,9 +43,9 @@ public class Config{
     public static String wordpressAdminUser;
     public static String wordpressAdminPass;
     public void configCheck() throws IOException,ObjectMappingException{
-        if(!plugin.defaultConfFile.exists()){
-            plugin.defaultConfFile.createNewFile();
-        }
+        //if(!plugin.defaultConfFile.exists()){
+        //    plugin.defaultConfFile.createNewFile();
+        //}
         preLoginMsg=check(config.getNode("messages","preLogin"),preLoginMsg).getString();
         mustLoginMsg=check(config.getNode("messages","mustLogin"),mustLoginMsg).getString();
         passwordNoMatch=check(config.getNode("messages","passwordNoMatch"),passwordNoMatch).getString();
