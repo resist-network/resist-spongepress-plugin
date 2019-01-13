@@ -1,11 +1,12 @@
 plugins {
+    id 'net.kyori.blossom' version '1.1.0'
     id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'com.github.johnrengelman.shadow'
 group = 'net.resist'
-version = '1.0.1'
+version = '1.0.2'
 description = 'Wordpress Authentication and Utilities'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -13,29 +14,38 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 repositories {
+    mavenCentral()
     maven { url "http://repo.spongepowered.org/maven" }
     maven { url "http://repo.maven.apache.org/maven2" }
-    maven { url "http://dl.bintray.com/content/johnrengelman/gradle-plugins" }
+    maven { url "http://dl.bintray.com/content/johnrengelman/gradle-plugins" }\
 }
 dependencies {
     compile group: 'com.zaxxer', name: 'HikariCP', version:'3.1.0'
     compileOnly group: 'org.spongepowered', name: 'spongeapi', version:'7.1.0-SNAPSHOT'
     compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.5.0'
     compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
+    compile('net.kyori:text:1.12-1.6.4') {
+        exclude(module: 'checker-qual')
+        exclude(module: 'guava')
+        exclude(module: 'gson')
+    }	
 }
 shadowJar {
 	classifier ''
     dependencies {
             include(dependency("com.squareup.okhttp:okhttp:2.5.0"))
             include(dependency("com.squareup.okio:okio:1.13.0"))
+            include(dependency("net.kyori:text:1.12-1.6.4"))
     }
     relocate 'com.squareup.okhttp3', 'net.resist.external.okhttp'
     relocate 'com.squareup.okio', 'net.resist.external.okio'
+    relocate 'net.kyori.text', 'net.resist.external.text'
 }
 jar {
     classifier ''
     dependencies {
         compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
+        compile group: 'net.kyori', name: 'text', version: '1.12-1.6.4'		
     }
     manifest {
         attributes(

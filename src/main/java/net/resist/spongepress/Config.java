@@ -15,8 +15,9 @@ public class Config{
         configCheck();
     }
     public static int mysqlPort;
-    public static boolean blockBuildBeforeLogin=true;
-    public static boolean blockMovementBeforeLogin=true;
+	//These are disabled right now as I removed /login + /logout since we are ONLINE only.
+    public static boolean blockBuildBeforeLogin=false;
+    public static boolean blockMovementBeforeLogin=false;
     public static boolean blockCommandsBeforeLogin=false;
     public static boolean vanishBeforeLogin=false;
     public static String chatPrefix="&8[&4&lResist&8&l.&4&lNetwork&r&8]&r ";
@@ -26,7 +27,7 @@ public class Config{
     public static String setpassError="&cStrange error setting your pass, contact staff!";
     public static String miscLoginError="&cThere was an error, please contact staff!";
     public static String incorrectPassword="&cWrong password!";
-    public static String setpassSuccess="&aYou successfully set a new password!";
+    public static String setpassSuccess="&aYou set a new forum password!";
     public static String loginSuccess="&aYou have successfully logged in!";
     public static String logoutSuccess="&aYou have successfully logged out!";
     public static String alreadyLoggedInError="&eYou are already logged in!";
@@ -40,6 +41,7 @@ public class Config{
     public static String APIendpoint;
     public static String wordpressNewUserEmailDomain;
     public static String wordpressURL;
+    public static String profileURL;
     public static String wordpressAdminUser;
     public static String wordpressAdminPass;
     public void configCheck() throws IOException,ObjectMappingException{
@@ -74,6 +76,7 @@ public class Config{
         mysqlPrefix=check(config.getNode("storage","mysql","table-prefix"),"wp_","Prefix for the plugin tables").getString();
         APIendpoint=check(config.getNode("api","endpoints","type"),"wordpress","Currently only Wordpress").getString();
         wordpressURL=check(config.getNode("api","endpoints","wordpress","url"),"","The Wordpress Site URL").getString();
+        profileURL=check(config.getNode("api","endpoints","wordpress","profileURL"),"","The Wordpress Profile URL").getString();
         wordpressAdminUser=check(config.getNode("api","endpoints","wordpress","adminUser"),"","Wordpress Site Admin Username").getString();
         wordpressAdminPass=check(config.getNode("api","endpoints","wordpress","adminPass"),"","Wordpress Site Admin Password").getString();
         wordpressNewUserEmailDomain=check(config.getNode("api","endpoints","wordpress","newUserEmailDomain"),"resist.network","Wordpress FQDN").getString();

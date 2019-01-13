@@ -22,12 +22,13 @@ public class setpassCMD implements CommandExecutor{
     public CommandResult execute(CommandSource src,CommandContext args) throws CommandException{
         Player player=(Player)src;
         String playerName=player.getName();
-        if (!plugin.getDataStore().getLoggedIn().contains(playerName)) {
-            plugin.sendMessage(src,Config.chatPrefix+Config.mustLoginMsg);
-        } else {        
+        // We already know they logged in with a Good MOJANG token, so we will just edit this bit out.
+		//if (!plugin.getDataStore().getLoggedIn().contains(playerName)) {
+            //plugin.sendMessage(src,Config.chatPrefix+Config.mustLoginMsg);
+        //} else {        
             try{
                 Optional<String> firstPass=args.<String>getOne("password");
-                Optional<String> secondPass=args.<String>getOne("passwordAgain");
+				Optional<String> secondPass=args.<String>getOne("passwordAgain");
                 String password=firstPass.get();
                 String passwordAgain=secondPass.get();
                 String wordpressID=plugin.getDataStore().getWordpressID(playerName);
@@ -37,7 +38,7 @@ public class setpassCMD implements CommandExecutor{
                         "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                     RequestBody body=RequestBody.create(mediaType,
                         "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"+passwordAgain+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-                    Request request=new Request.Builder().url("https://resist.network/wp-json/wp/v2/users/"+wordpressID).post(body)
+                    Request request=new Request.Builder().url(Config.wordpressURL+"/wp-json/wp/v2/users/"+wordpressID).post(body)
                         .addHeader("content-type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
                         .addHeader("Authorization","Bearer "+plugin.wordpressToken).addHeader("cache-control","no-cache")
                         .build();
@@ -49,7 +50,7 @@ public class setpassCMD implements CommandExecutor{
             }catch(Exception e){
                 plugin.sendMessage(src,Config.chatPrefix+"Set Pass Error: "+e);
             }
-        }
+        //}
         return CommandResult.success();
     }
 }

@@ -42,7 +42,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
-@Plugin(id="resist-spongepress-plugin",name="RESIST SpongePress Plugin",version="1.0.1",description="Wordpress Authentication and Utilities")
+import net.kyori.text.serializer.ComponentSerializers;
+import net.kyori.text.TextComponent;
+import net.kyori.text.Component;
+import net.kyori.text.event.ClickEvent;
+import net.kyori.text.event.HoverEvent;
+import net.kyori.text.format.TextColor;
+import net.kyori.text.format.TextDecoration;
+
+@Plugin(id="resist-spongepress-plugin",name="RESIST SpongePress Plugin",version="1.0.2",description="Wordpress Authentication and Utilities")
 public class Main{
 	@Inject
 	private Logger logger;
@@ -102,13 +110,14 @@ public class Main{
 		loadDataStore();
 	}
 	private void loadCommands(){
-		CommandSpec login=CommandSpec.builder().description(Text.of("Login to the Server.")).arguments(GenericArguments
-			.string(Text.of("password"))).executor(new loginCMD(this)).build();
-		cmdManager.register(this,login,"login");
-		CommandSpec logout=CommandSpec.builder().description(Text.of("Logout of the Server.")).arguments().executor(
-			new logoutCMD(this)).build();
-		cmdManager.register(this,logout,"logout");
-		CommandSpec setpass=CommandSpec.builder().description(Text.of("Login to the Server.")).arguments(
+		//Removed since Resist is ONLINE mode only. :P Pay for Minecraft!
+		//CommandSpec login=CommandSpec.builder().description(Text.of("Login to the Server.")).arguments(GenericArguments
+			//.string(Text.of("password"))).executor(new loginCMD(this)).build();
+		//cmdManager.register(this,login,"login");
+		//CommandSpec logout=CommandSpec.builder().description(Text.of("Logout of the Server.")).arguments().executor(
+			//new logoutCMD(this)).build();
+		//cmdManager.register(this,logout,"logout");
+		CommandSpec setpass=CommandSpec.builder().description(Text.of("Set Password.")).arguments(
 			GenericArguments.string(Text.of("password")),GenericArguments.string(Text.of("passwordAgain"))).executor(
 				new setpassCMD(this)).build();
 		cmdManager.register(this,setpass,"setpass");
@@ -128,7 +137,7 @@ public class Main{
 		String playerName=player.getName();
 		if(!getDataStore().getAccepted().contains(player.getName())){
 			getLogger().info("Player "+playerName+" is a new player to the server!");
-			sendMessage(player,Config.chatPrefix+"Welcome to the server &l&e"+playerName+"&r!");
+			//sendMessage(player,Config.chatPrefix+"Welcome to the server &l&e"+playerName+"&r!");
 			try{
 				Random rnd=new Random();
 				int number=rnd.nextInt(999999);
@@ -147,15 +156,34 @@ public class Main{
 						"cache-control","no-cache").build();
 				@SuppressWarnings("unused")
 				Response response=client.newCall(request).execute();
-				sendMessage(player,Config.chatPrefix+"Your new password is: &l&b"+newPass+"&r");
-				sendMessage(player,Config.chatPrefix+"Use &l&b/setpass&r to change!");
+				sendMessage(player,Config.chatPrefix+"Your new forum password is: &l&b"+newPass+"&r");
+				sendMessage(player,Config.chatPrefix+"Use &l&b/setpass&r to change at anytime!");
 				getDataStore().addPlayer(player.getName());
 			}catch(Exception e){
 				getLogger().error("Create User Error: "+e);
 			}
 		}else{
-			sendMessage(player,Config.chatPrefix+"Welcome back &l&e"+playerName+"&r!");
-			sendMessage(player,Config.chatPrefix+"Use &l&e/login&r before continuing!");
+			//We had a login here, but Resist is ONLINE mode only, so removing. 
+			//https://github.com/resist-network/resist-spongepress-plugin commit history will have this information. 
+			//sendMessage(player,Config.chatPrefix+"Welcome back &l&e"+playerName+"&r!");
+			sendMessage(player,Config.chatPrefix+"&7Your forum password is already set.");
+			//sendMessage(player,Config.chatPrefix+""+Config.profileURL+"/"+playerName);			
+			//TextComponent profileComponent;
+			//profileComponent = TextComponent.of("Hello ")
+			//  .color(TextColor.GOLD)
+			//  .append(
+			//	TextComponent.of("world")
+			//	  .color(TextColor.AQUA).
+			//	  decoration(TextDecoration.BOLD, true)
+			//  )
+			//  .append(TextComponent.of("!").color(TextColor.RED));
+			//profileComponent = profileComponent.toBuilder().applyDeep(c -> {
+			//	c.clickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tps"));
+			//	c.hoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Click to View Your Profile!").color(TextColor.AQUA)));
+			//}).build();
+			//String profileLink = Config.profileURL;
+			//sendMessage(player,Config.chatPrefix+""+profileComponent);
+			sendMessage(player,Config.chatPrefix+"&7Use &l&e/setpass&r&7 if you forgot it!");
 		}
 	}
 	@Listener

@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/resist-spongepress-plugin/external/spigot-api-1.12.2-R0.1-20180712.012057-156-shaded.jar"/>
 	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/resist-spongepress-plugin/external/spongeapi-7.1.0-shaded.jar"/>
 	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/resist-spongepress-plugin/external/okhttp-2.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Storage/Repositories/resist.network/resist-spongepress-plugin/external/text-1.12-1.6.4.jar"/>
 	<classpathentry kind="output" path="build/classes/java/main"/>
 </classpath>
