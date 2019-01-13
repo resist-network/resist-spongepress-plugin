@@ -27,13 +27,15 @@ shadowJar {
 	classifier ''
     dependencies {
             include(dependency("com.squareup.okhttp:okhttp:2.5.0"))
+            include(dependency("com.squareup.okio:okio:1.13.0"))
     }
     relocate 'com.squareup.okhttp3', 'net.resist.external.okhttp'
     relocate 'com.squareup.okio', 'net.resist.external.okio'
 }
 jar {
-	classifier ''
+    classifier ''
     dependencies {
+        compile group: 'com.squareup.okio', name: 'okio', version: '1.13.0'
     }
     manifest {
         attributes(
